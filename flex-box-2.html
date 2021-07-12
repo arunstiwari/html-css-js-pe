@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            display: flex;
+            background-color: gainsboro;
+            border: 1px solid red;
+            height: 200px;
+            flex: 1;
+        }
+        .items {
+            /*width: 32%;*/
+            height: 100px;
+            background-color: darkblue;
+            color: white;
+            margin-right: 10px;
+            flex: 1 1 auto;
+        }
+
+        .items2 {
+            /*width: 32%;*/
+            height: 100px;
+            background-color: darkblue;
+            color: white;
+            margin-right: 10px;
+            flex: 2.5 1 auto;
+        }
+
+        .display-item{
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="items">Box1</div>
+    <div class="items2" >Box2</div>
+    <div class="items">Box3</div>
+</div>
+</body>
+</html>
