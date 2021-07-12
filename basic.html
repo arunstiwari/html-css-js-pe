@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid red;
+            /*font-size: 24px;*/
+        }
+        .header{
+            width: 100%;
+            height: 2rem;
+            background-color: aliceblue;
+        }
+        .footer{
+            width: 100%;
+            height: 50px;
+            background-color: lightcyan;
+        }
+        .aside-left{
+            height: 600px;
+            width:100%;
+            background-color: green;
+            display: inline-block;
+        }
+        .aside-right{
+            height: 600px;
+            width: 100%;
+            background-color: yellow;
+            display: inline-block;
+        }
+        .main{
+            height: 600px;
+            width: 100%;
+            background-color: beige;
+            display: inline-block;
+        }
+        @media (min-width: 768px) {
+            .header{
+                width: 100%;
+                height: 2rem;
+                background-color: aliceblue;
+            }
+            .footer{
+                width: 100%;
+                height: 50px;
+                background-color: lightcyan;
+            }
+            .aside-left{
+                height: 600px;
+                width: 20%;
+                background-color: green;
+                display: inline-block;
+            }
+            .aside-right{
+                height: 600px;
+                width: 10%;
+                background-color: yellow;
+                display: inline-block;
+            }
+            .main{
+                height: 600px;
+                width: 68%;
+                background-color: beige;
+                display: inline-block;
+            }
+        }
+        @media (min-width: 1000px) {
+            .header{
+                width: 100%;
+                height: 2rem;
+                background-color: aliceblue;
+            }
+            .footer{
+                width: 100%;
+                height: 100vh;
+                background-color: lightcyan;
+            }
+            .aside-left{
+                height: 30px;
+                width: 20%;
+                background-color: green;
+                display: inline-block;
+            }
+            .aside-right{
+                height: 30px;
+                width: 10%;
+                background-color: yellow;
+                display: inline-block;
+            }
+            .main{
+                height: 30px;
+                width: 68%;
+                background-color: beige;
+                display: inline-block;
+            }
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">Header Content</header>
+        <aside class="aside-left">Left Hand Side</aside>
+        <main class="main">Main Content </main>
+        <aside class="aside-right">Right Side Content</aside>
+        <footer class="footer">Footer Content</footer>
+    </div>
+
+</body>
+</html>
