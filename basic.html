@@ -106,17 +106,148 @@
             }
         }
 
+        li{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        li:nth-child(odd){
+            background-color: gray;
+        }
+        li:nth-child(even){
+            background-color: lightblue;
+        }
+        li:nth-child(n+3){
+            color: red;
+        }
+        [data-model="open"]{
+            border: 2px solid blue;
+        }
+        a:hover{
+            color: orange;
+        }
+        input:required{
+            border: 1px red;
+        }
+        .item{
+            color: orange;
+        }
+        .item:not(.not-item4){
+            color: green;
+        }
+        /*.not-item4{*/
+        /*    color: green;*/
+        /*}*/
+
+        .item1{
+            padding: 10px;
+            background-color: gray;
+        }
+        .item1:empty {
+            display: none;
+        }
+
+        .parent {
+            font-size: 2rem;
+        }
+        .parent > .child {
+            font-size: 3rem;
+        }
+
+        .one + .item11 {
+            background-color: pink;
+        }
+        .item11:nth-child(3) ~ .item11{
+            background-color: green;
+        }
+
+        .circle{
+            display: inline-block;
+            height: 2rem;
+            width: 2rem;
+            background-color: orange;
+        }
+        .circle:not(.not-circle){
+            border-radius: 50%;
+        }
+        .paragraph::first-letter{
+            font-size: 3rem;
+        }
+        .paragraph::before{
+            content: '*';
+            color: red;
+        }
+
+        .paragraph1::after{
+            content: '*';
+            color: red;
+        }
+
     </style>
     <title>Document</title>
 </head>
 <body>
-    <div class="wrap">
-        <header class="header">Header Content</header>
-        <aside class="aside-left">Left Hand Side</aside>
-        <main class="main">Main Content </main>
-        <aside class="aside-right">Right Side Content</aside>
-        <footer class="footer">Footer Content</footer>
+<picture>
+    <source media="(min-width: 480px)" srcset="./150.png" />
+    <source media="(min-width: 960px)" srcset="./250.png" />
+    <img src="./150.png" alt="Image placeholder"/>
+
+</picture>
+
+<!--   <img src="https://via.placeholder.com/150"-->
+<!--      srcset="https://via.placeholder.com/150 150w,https://via.placeholder.com/200 250w  "-->
+<!--        sizes="(min-width: 280px) 100vw, (min-width: 640px) 50vw"-->
+<!--   />-->
+    <p class="paragraph1">Contrary </p>
+    <p class="paragraph">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle not-circle"></div>
+    <div class="circle"></div>
+
+
+    <div class="item11 one" >Item1</div>
+    <div class="item11">Item2</div>
+    <div class="item11">Item3</div>
+    <div class="item11 not-item4">Item4</div>
+    <div class="item11">Item5</div>
+
+    <div class="parent">Parent
+        <div class="child"> Child
+            <div class="grandchild">GrandChildren</div>
+        </div>
+
     </div>
+
+
+<!--<div data-model="open">-->
+
+    <div class="item1">fdfd</div>
+
+    <div class="item" >Item1</div>
+    <div class="item">Item2</div>
+    <div class="item">Item3</div>
+    <div class="item not-item4">Item4</div>
+    <div class="item">Item5</div>
+    <a href="#">Go to google</a>
+    <input type="text" placeholder="Name.." required>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+<!--</div>-->
+<!--    <div class="wrap">-->
+<!--        <header class="header">Header Content</header>-->
+<!--        <aside class="aside-left">Left Hand Side</aside>-->
+<!--        <main class="main">Main Content </main>-->
+<!--        <aside class="aside-right">Right Side Content</aside>-->
+<!--        <footer class="footer">Footer Content</footer>-->
+<!--    </div>-->
+
+
 
 </body>
 </html>

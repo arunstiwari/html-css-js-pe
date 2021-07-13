@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        input:placeholder-shown {
+            color: red;
+        }
+        .input-name{
+            border: 2px solid darkblue;
+            width: 100px;
+        }
+        #name{
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>About the offending field</legend>
+        <label for="name">Product Name:</label>
+    <input id="name" name="name"
+           class="input-name"
+           type="text"
+           placeholder="Enter Name..."
+            autofocus
+    />
+    </fieldset>
+    <input id="name1" name="name1"
+           class="input-name1"
+           type="text"
+           placeholder="Enter Name..."
+           autofocus
+           autocomplete="off"
+    />
+    <input type="text" list="names" autocomplete="off">
+    <datalist id="names">
+        <select>
+            <option value="Name1"></option>
+            <option value="Name2"></option>
+            <option value="Name3"></option>
+            <option value="Name4"></option>
+        </select>
+    </datalist>
+    <div>
+        <input id="name2" name="name2"
+               class="input-name1"
+               type="email"
+               placeholder="Enter Email..."
+               autofocus
+               autocomplete="off"
+               required
+        />
+
+    </div>
+
+    <div>
+        <input  name="name2"
+               class="input-name1"
+               type="number"
+               min="200"
+                max="1000"
+                step="10"
+                required
+        />
+
+    </div>
+
+
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+
+                type="url"
+                min="200"
+                max="1000"
+                step="10"
+                required
+        />
+
+    </div>
+
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="color"
+                required
+        />
+
+    </div>
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="date"
+                required
+        />
+
+    </div>
+
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="month"
+                required
+        />
+
+    </div>
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="week"
+                required
+        />
+
+    </div>
+
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="time"
+                required
+        />
+
+    </div>
+
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="range"
+                min="1"
+                max="100"
+                value="20"
+                required
+                onchange="showValue(this.value)"
+        />
+        <span id="range-value">20</span>
+    </div>
+    <div>
+        <input  name="name2"
+                class="input-name1"
+                placeholder="Enter website url"
+                type="password"
+
+        />
+
+    </div>
+</form>
+<script>
+    function showValue(newvalue){
+        document.getElementById('range-value').innerHTML=newvalue;
+    }
+</script>
+</body>
+</html>
