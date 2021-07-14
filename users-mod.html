@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button onclick="populateUsers()">Fetch users</button>
+<ul>
+
+</ul>
+</body>
+<script>
+    var myList = document.querySelector("ul");
+
+    async function fetchUsers(){
+        let response = await fetch('https://jsonplaceholder.typicode.com/users');
+        let data = await response.json();
+        console.log(" data --"+data);
+        return data;
+    }
+
+    function populateUsers (){
+        //1. Create XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        //2. Configure url
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+         xhr.responseType = 'json';
+
+        //3 . send the request to the network
+        xhr.send();
+
+        // 4. onload handler function
+        xhr.onload = function (){
+            if (xhr.status !=200){
+                console.log('Error retrieving the data '+xhr.status);
+            }
+            else {
+                console.log("Data has been retrieved successfully");
+                let json = xhr.response;
+                for (let i = 0; i < json.length; i++) {
+                    var listitem = document.createElement('li');
+                    listitem.innerHTML = json[i].name;
+                    myList.appendChild(listitem);
+                }
+            }
+        }
+
+        xhr.onerror = function (){
+
+        }
+
+        xhr.onprogress = function (event){
+            alert(`Received : ${event.loaded} bytes`)
+        }
+    }
+
+
+    //Using fetch
+    // function fetchUsers() {
+    //     fetch('https://jsonplaceholder.typicode.com/users')
+    //         .then(function (response) {
+    //             if (!response.ok) {
+    //                 throw new Error("Http Error, status = " + response.status);
+    //             }
+    //             console.log(" response : " + response);
+    //             return response.json();
+    //         })
+    //         .then(function (json) {
+    //             console.log(" json : " + JSON.stringify(json));
+    //             for (let i = 0; i < json.length; i++) {
+    //                 var listitem = document.createElement('li');
+    //                 listitem.innerHTML = json[i].name;
+    //                 myList.appendChild(listitem);
+    //             }
+    //         }).catch(function (error) {
+    //         console.log('error : ' + error);
+    //         var p = document.createElement('p');
+    //         p.appendChild(
+    //             document.createTextNode('Error fetching the user data ')
+    //         );
+    //         // myList.insertBefore(p, myList);
+    //
+    //         var body = document.querySelector("body");
+    //         body.insertBefore(p, myList);
+    //     });
+    // }
+</script>
+</html>
