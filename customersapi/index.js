@@ -2,6 +2,17 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
+
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/customers", {useNewUrlParser: true, useUnifiedTopology: true}, (err)=> {
+    if (err){
+        console.log("Error connecting to mongodb");
+    }else{
+        console.log("Connected to mongodb successfully");
+    }
+});
+
 const customerRouter = require('./customers/routes');
 
 const port =process.env.CUSTOMER_SERVICE_PORT || 3000;
