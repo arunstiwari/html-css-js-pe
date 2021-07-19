@@ -17,18 +17,21 @@ class UserApp extends Component {
     //     console.log('In constructor');
     // }
     //
-    // componentDidMount() {
-    //     console.log('In componentDidMount');
-    // }
+    componentDidMount() {
+        console.log('In componentDidMount');
+        window.addEventListener('resize', ()=> {
+            console.log(' window size is ', window.innerHeight , ' width : ',window.innerWidth);
+        })
+    }
     //
     // shouldComponentUpdate(nextProps, nextState, nextContext) {
     //     console.log('shouldComponentUpdate : nextProps ', nextProps, ' nextState: ',nextState);
     //     return true;
     // }
     //
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     console.log('componentDidUpdate(prevProps, prevState, snapshot ',prevProps, '  ',prevState );
-    // }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate(prevProps, prevState, snapshot ',prevProps, '  ',prevState );
+    }
     //
     // componentDidCatch(error, info) {
     //     console.log(' componentDidCatch(error, info) ',error, ' ', info);
@@ -39,6 +42,9 @@ class UserApp extends Component {
     //     return null;
     // }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize');
+    }
 
     // handleNameChange = (e) => {
     //     console.log('In handleNameChange method: ',e.target.value);

@@ -22,6 +22,33 @@ const reducer = (state, action) => {
                 ...state,
                 bookableIndex:action.payload
             }
+
+        case 'TOGGLE_HAS_DETAILS':
+            return {
+                ...state,
+                hasDetails: !state.hasDetails
+            }
+        case 'FETCH_BOOKABLE_REQUEST':
+            return {
+                ...state,
+               isLoading: true,
+                error: false,
+                bookables: []
+            }
+        case 'FETCH_BOOKABLE_SUCCESSFULL':
+            return {
+                ...state,
+                isLoading: false,
+                error: false,
+                bookables: action.payload
+            }
+
+        case 'FETCH_BOOKABLE_ERROR':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
         default:
             return state;
     }

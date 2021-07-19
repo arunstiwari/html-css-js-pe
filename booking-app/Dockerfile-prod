@@ -1,0 +1,23 @@
+FROM node:15-alpine3.13 as build
+# set working dir
+WORKDIR /app
+
+# add /app/node_modules/.bin to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package*.json ./
+RUN npm install --silent
+RUN npm install react-scripts@4.0.3 -g --silent
+
+# add app
+COPY . ./
+
+RUN npm run build
+
+# production environment
+FROM nginx:stable-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+# start app
+CMD ["nginx","-g", "daemon off;"]

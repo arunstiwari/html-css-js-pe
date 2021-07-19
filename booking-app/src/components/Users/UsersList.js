@@ -1,9 +1,27 @@
-import React, {useState} from 'react';
-import {users} from '../../data.json';
+import React, {useEffect, useState} from 'react';
+import Spinner from "../UI/Spinner";
+// import {users} from '../../data.json';
 
 const UsersList = () => {
+    const [users, setUsers] = useState(null);
     const [userIndex, setUserIndex] = useState(0);
-    const user = users[userIndex];
+    const user = users?.[userIndex];
+
+    useEffect(()=>{
+        const fetchUsers = async () => {
+            const response = await fetch("http://localhost:3002/users");
+            const usersList = await response.json();
+            console.log('---users---',usersList);
+            setUsers(usersList);
+        }
+
+        fetchUsers();
+    },[])
+
+    if (users === null){
+        return <p><Spinner />Loading Users ...</p>
+    }
+
     return (
         <>
             <ul className="users items-list-nav">

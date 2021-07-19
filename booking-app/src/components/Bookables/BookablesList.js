@@ -1,30 +1,43 @@
-import React, {useReducer, useState} from 'react';
-import {bookables,days,sessions} from '../../data.json';
+import React, {useEffect, useReducer, useState} from 'react';
+import {days,sessions} from '../../data.json';
 import {FaArrowRight} from "react-icons/all";
 import reducer from "./reducer";
+import Spinner from "../UI/Spinner";
 
 const initialState = {
     group: 'Rooms',
     bookableIndex: 0,
-    bookables: bookables
+     bookables : [],
+    hasDetails: true,
+    isLoading: true,
+    error: false
 }
 
 const BookablesList = () => {
-    // const[group, setGroup] = useState('Kit');
     const [state, dispatch] = useReducer(reducer,initialState);
-    const {group, bookableIndex} = state;
+    const {group, bookableIndex, hasDetails ,bookables, isLoading} = state;
 
     const bookablesInGroup = bookables.filter(b => b.group === group);
-    // const [bookableIndex, setBookableIndex] = useState(0);
-
     const groups = [...new Set(bookables.map( b => b.group))];
-
     const bookable = bookablesInGroup[bookableIndex];
-    const [hasDetails, setHasDetails] = useState(false);
+
+    useEffect(()=> {
+        dispatch({type: 'FETCH_BOOKABLE_REQUEST'});
+
+        const fetchBookableData = async () => {
+            try{
+                const response = await fetch("http://localhost:3002/bookables");
+                const data = await response.json();
+                dispatch({type: 'FETCH_BOOKABLE_SUCCESSFULL', payload: data});
+            }catch (error){
+                dispatch({type: 'FETCH_BOOKABLE_ERROR', payload: error});
+            }
+        }
+
+        fetchBookableData();
+    }, [])
 
     const changeBookable = (i) => {
-        // setBookableIndex(i);
-        // console.log('i : ',i);
         dispatch({
             type: 'SET_BOOKABLE_INDEX',
             payload: i
@@ -32,7 +45,6 @@ const BookablesList = () => {
     }
 
     const nextBookable = () => {
-        // setBookableIndex(i => (i+1)%bookablesInGroup.length);
         dispatch({
             type: 'NEXT_BOOKABLE'
         })
@@ -43,8 +55,16 @@ const BookablesList = () => {
             type: 'SET_GROUP',
             payload: e.target.value
         })
-        // setGroup(e.target.value);
-        // setBookableIndex(0);
+    }
+
+    const toggleDetails = () => {
+        dispatch({
+            type: 'TOGGLE_HAS_DETAILS'
+        })
+    }
+
+    if(isLoading){
+        return <p><Spinner />Loading Bookables data ...</p>
     }
     return (
         <>
@@ -76,7 +96,7 @@ const BookablesList = () => {
                             <span className="controls">
                                 <input type="checkbox"
                                         checked={hasDetails}
-                                       onChange={()=> setHasDetails(has => !has)}/>
+                                       onChange={toggleDetails}/>
                                 Show Details
                             </span>
                         </div>
