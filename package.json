@@ -4,5 +4,8 @@
     "jade": "^1.11.0",
     "react-icons": "^4.2.0",
     "react-router-dom": "^6.0.0-beta.0"
+  },
+  "devDependencies": {
+    "msw": "^0.32.0"
   }
 }

@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import SayHello from "./example/SayHello";
+import UserApp from "./example/UserApp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/*<App />*/}
     {/*  <SayHello />*/}
+      <UserApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
