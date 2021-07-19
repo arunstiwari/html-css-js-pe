@@ -1,11 +1,21 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {bookables,days,sessions} from '../../data.json';
 import {FaArrowRight} from "react-icons/all";
+import reducer from "./reducer";
+
+const initialState = {
+    group: 'Rooms',
+    bookableIndex: 0,
+    bookables: bookables
+}
 
 const BookablesList = () => {
-    const[group, setGroup] = useState('Kit');
+    // const[group, setGroup] = useState('Kit');
+    const [state, dispatch] = useReducer(reducer,initialState);
+    const {group, bookableIndex} = state;
+
     const bookablesInGroup = bookables.filter(b => b.group === group);
-    const [bookableIndex, setBookableIndex] = useState(0);
+    // const [bookableIndex, setBookableIndex] = useState(0);
 
     const groups = [...new Set(bookables.map( b => b.group))];
 
@@ -13,17 +23,33 @@ const BookablesList = () => {
     const [hasDetails, setHasDetails] = useState(false);
 
     const changeBookable = (i) => {
-        setBookableIndex(i);
-        console.log('i : ',i);
+        // setBookableIndex(i);
+        // console.log('i : ',i);
+        dispatch({
+            type: 'SET_BOOKABLE_INDEX',
+            payload: i
+        })
     }
 
     const nextBookable = () => {
-        setBookableIndex(i => (i+1)%bookablesInGroup.length);
+        // setBookableIndex(i => (i+1)%bookablesInGroup.length);
+        dispatch({
+            type: 'NEXT_BOOKABLE'
+        })
+    }
+
+    const changeGroup = (e) => {
+        dispatch({
+            type: 'SET_GROUP',
+            payload: e.target.value
+        })
+        // setGroup(e.target.value);
+        // setBookableIndex(0);
     }
     return (
         <>
         <div>
-            <select value={group} onChange={(e) => setGroup(e.target.value) } >
+            <select value={group} onChange={changeGroup } >
                 { groups.map((g,i) => <option key={g} value={g}>{g}</option>)}
             </select>
             <ul className="bookables  items-list-nav">
