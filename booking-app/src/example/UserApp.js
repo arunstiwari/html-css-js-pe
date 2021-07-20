@@ -35,7 +35,7 @@ const UserApp = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input value={name} name="username" onInput={handleNameChange}
+                <input value={name}  name="username" onInput={handleNameChange}
                        title='username'
                        placeholder="Enter name"
                 />

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Spinner from "../UI/Spinner";
-// import {users} from '../../data.json';
 
 const UsersList = () => {
     const [users, setUsers] = useState(null);

@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useReducer, useRef, useState} from 'react';
 import {days,sessions} from '../../data.json';
 import {FaArrowRight} from "react-icons/all";
 import reducer from "./reducer";
@@ -13,13 +13,15 @@ const initialState = {
     error: false
 }
 
-const BookablesList = () => {
+const BookablesList = (props) => {
     const [state, dispatch] = useReducer(reducer,initialState);
     const {group, bookableIndex, hasDetails ,bookables, isLoading} = state;
 
     const bookablesInGroup = bookables.filter(b => b.group === group);
     const groups = [...new Set(bookables.map( b => b.group))];
     const bookable = bookablesInGroup[bookableIndex];
+
+    const timerRef = useRef(null);
 
     useEffect(()=> {
         dispatch({type: 'FETCH_BOOKABLE_REQUEST'});
@@ -35,7 +37,22 @@ const BookablesList = () => {
         }
 
         fetchBookableData();
-    }, [])
+    }, [props.xyz])
+
+    useEffect(() => {
+        timerRef.current = setInterval(() => {
+            dispatch({
+                type: 'NEXT_BOOKABLE'
+            })
+        },3000);
+
+        return () => {clearInterval(timerRef.current)};
+
+    },[]);
+
+    const stopPresentation = () => {
+        clearInterval(timerRef.current);
+    }
 
     const changeBookable = (i) => {
         dispatch({
@@ -89,7 +106,7 @@ const BookablesList = () => {
             </p>
         </div>
             {
-                bookables && (
+                bookable && (
                     <div className='item'>
                         <div className="item-header">
                             <h2>{bookable.title}</h2>
@@ -98,6 +115,7 @@ const BookablesList = () => {
                                         checked={hasDetails}
                                        onChange={toggleDetails}/>
                                 Show Details
+                                <button onClick={stopPresentation}>Stop</button>
                             </span>
                         </div>
 
