@@ -71,6 +71,7 @@ const TodoForm = ({createNewTodo}) => {
     return(
         <form onSubmit={handleSubmit}>
             <input
+                id='todoinput'
                 type="text"
                 placeholder="Enter todo..."
                 onInput={onTodoChange}

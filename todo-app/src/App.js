@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       {/*<TodoAppWithClass />*/}
-      {/*  <TodoAppWithHook />*/}
-        <TodoAppWithUseReducer />
+        <TodoAppWithHook />
+      {/*  <TodoAppWithUseReducer />*/}
     </div>
   );
 }

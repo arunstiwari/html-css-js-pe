@@ -3,6 +3,7 @@ import React from 'react';
 import UserApp from './UserApp';
 import UserAppWithHook from "./UserAppWithHook";
 import {useContext} from "react";
+import HocApp from "./pattern/hoc/HocApp";
 
 const Title = (props) =>  {
     const title = useContext(TitleContext);
@@ -66,13 +67,13 @@ const addNumber = (n) => {
     return(
         <div>
             {/*<UserApp />*/}
-            <UserAppWithHook />
+            {/*<UserAppWithHook />*/}
             {/*<TitleApp />*/}
             {/*<BlogPost add={addNumber}>*/}
             {/*    <CommentList comments={commentList} />*/}
             {/*    <button>Add</button>*/}
             {/*</BlogPost>*/}
-
+            <HocApp />
         </div>
     )
 }
