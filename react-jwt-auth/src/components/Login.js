@@ -28,6 +28,7 @@ const Login = (props) => {
 
         if (data){
             props.history.push('/');
+            window.location.reload();
         }
         if (error) {
             console.log('--error---',error);

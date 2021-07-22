@@ -4,6 +4,10 @@ const URL = 'http://localhost:9090/api/auth/'
 
 class AuthenticationService {
 
+    getUser =  () => {
+        return JSON.parse(localStorage.getItem('user'));
+    }
+
     login = async (username, password) => {
          const {data, error}   = await axios.post(URL+'signin', {
               username,
@@ -13,7 +17,7 @@ class AuthenticationService {
         console.log('--error', error);
 
         if (data.jwt) {
-            localStorage.setItem("user",JSON.stringify(data.jwt) );
+            localStorage.setItem("user",JSON.stringify(data) );
         }
         return {data, error}
     }
