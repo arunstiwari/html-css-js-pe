@@ -20,8 +20,8 @@ const Main = () => {
         a: '232',
         b: '456'
     };
-    // let baz1 = useCallback(()=> ({a:1, b:2 }),[]);
-    // let bar = useMemo(() => [0,1,2,3], []);
+    let baz1 = useCallback(()=> ({a:1, b:2 }),[]);
+    let bar = useMemo(() => [0,1,2,3], []);
 
 
     return (

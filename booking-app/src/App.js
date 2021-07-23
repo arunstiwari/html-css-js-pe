@@ -19,19 +19,19 @@ function App() {
                   <li>
                     <Link to="/bookings" className={'btn btn-header'}>
                       <FaCalendarAlt />
-                      <span>Bookings</span>
+                      <span id="bookings">Bookings</span>
                     </Link>
                   </li>
                     <li>
                         <Link to="/bookables" className={'btn btn-header'}>
                             <FaDoorOpen />
-                            <span>Bookables</span>
+                            <span id="bookables">Bookables</span>
                         </Link>
                     </li>
                     <li>
                         <Link to="/users" className={'btn btn-header'}>
                             <FaUsers />
-                            <span>Users</span>
+                            <span id="users">Users</span>
                         </Link>
                     </li>
                 </ul>

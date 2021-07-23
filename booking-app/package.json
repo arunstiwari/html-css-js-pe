@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "history": "^5.0.0",
+    "msw": "^0.32.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -20,7 +21,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-ci": "CI=true react-scripts test --env=jsdom",
+    "ui-test": "cypress open",
+    "coverage:dev": "react-scripts test --coverage --watchAll",
+    "coverage:prod": "CI=true react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +44,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest":{
+    "colllectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!coverage/**",
+      "!node_modules/**",
+      "!src/tests/**",
+      "!src/index.js",
+      "!src/setupTests.js",
+      "!src/reportWebVitals.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "json",
+      "clover",
+      "cobertura"
+    ]
+},
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.0",
+    "cypress": "^8.0.0"
   }
 }

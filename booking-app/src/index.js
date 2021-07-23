@@ -16,7 +16,7 @@ import Main from "./example/Main";
 
 ReactDOM.render(
   // <React.StrictMode>
-  //   {/*<App />*/}
+    <App />
   //   {/*  <SayHello />*/}
   //   {/*  <UserApp />*/}
   //   {/*  <Counter />*/}
@@ -28,7 +28,7 @@ ReactDOM.render(
   //   <Provider store={store}>
   //       <CounterReduxApp />
   //   </Provider>
-    <Main />
+  //   <Main />
     ,
   document.getElementById('root')
 );
